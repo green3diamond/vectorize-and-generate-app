@@ -67,7 +67,7 @@ class MyHandler(FileSystemEventHandler):
 
 def main():
     print("Monitoring started...")
-    path = "/home/zdim/code/kaggle_w4/backend_offline/input_documents/to_process"
+    path = "/home/zgdi/code/vectorize-and-generate-app/backend_offline/to_process"
     handler = MyHandler()
     observer = Observer()
     observer.schedule(handler, path=path, recursive=False)
