@@ -8,3 +8,5 @@ __pycache__
 
 
 
+frontend/app/page.tsx
+backend_offline/to_process/*
