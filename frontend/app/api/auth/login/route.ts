@@ -5,7 +5,7 @@ import validateUser from '@/lib/users'
 
 export async function POST(request: NextRequest) {
   try {
-    const { username, password } = await request.json()
+    const { username, password, isAudio } = await request.json()
     const user = validateUser(username, password)
     
     if (!user) {
@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
     session.userId = user.id
     session.username = user.username
     session.isLoggedIn = true
+    session.isAudio = isAudio
     await session.save()
     const response = NextResponse.json({ success: true })
     return response

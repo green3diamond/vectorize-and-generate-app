@@ -5,10 +5,12 @@ export interface SessionData {
   userId?: string
   username?: string
   isLoggedIn: boolean
+  isAudio?: boolean 
 }
 
 const defaultSession: SessionData = {
   isLoggedIn: false,
+  isAudio: false,
 }
 
 export async function getSession() {

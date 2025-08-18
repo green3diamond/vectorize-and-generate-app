@@ -10,6 +10,7 @@ interface LoginDialogProps {
 export default function LoginDialog({ onSuccess }: LoginDialogProps) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [isAudio, setIsAudio] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
@@ -23,7 +24,7 @@ export default function LoginDialog({ onSuccess }: LoginDialogProps) {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, isAudio }),
       })
 
       // console.log('response')
@@ -79,7 +80,20 @@ export default function LoginDialog({ onSuccess }: LoginDialogProps) {
               disabled={loading}
             />
           </div>
-          
+
+         <div className="form-group form-group-toggle">
+          <label className="form-label">
+            Enable Audio
+          </label>
+          <input
+            type="checkbox"
+            checked={isAudio}
+            onChange={(e) => setIsAudio(e.target.checked)}
+            className="form-checkbox"
+            disabled={loading}
+          />
+        </div>
+
           {error && (
             <div className="error-message">{error}</div>
           )}
